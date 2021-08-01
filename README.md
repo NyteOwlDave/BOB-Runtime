@@ -1,66 +1,56 @@
+
 # BOB-Runtime
 
 Runtime environment for BOB-Original.
 
-This project contains the folder layout and initial files
-to setup a working copy of Bob on a local machine.
+# Registry Script
 
-This includes a working copy of the binary executable
-named `bob`. It also contains things like textures and
-examples for using various Bob features.
+Each of the Bob repositories must be registered after they are cloned. Each
+contains a script named `register` for that purpose.
 
-# Updates
+Basically this script has these functions:
 
-Updating the executable to the latest stable version
-requires cloning the `BOB-Original` repository and
-doing a rebuild using GCC.
+1. Register the local path for a repository
+2. Report on the local path for a repository
+3. Show a list of registered repositories
 
-```
-git clone https://github.com/NyteOwlDave/BOB-Original.git
-```
+## Register Function
 
----
+Registers the current working directory as the location of the repository
+it contains.
 
-# Help System
+## Report Function
 
-The help sytem for Bob is contained in a separate repo.
-It is HTML-based and written in markdown.
+Reports the current working folder for any of the four repositories that
+have been locally cloned.
 
-```
-git clone https://github.com/NyteOwlDave/BOB-Help.git
-```
+## Directory Function
 
-In order for this to work properly, you'll need to build
-the project, then copy it into a folder that your web
-server can expose to the public.
+Shows a list of the names of repositories that have already been registered.
 
-For example, a common arrangment the Apache web server
-on Ubuntu is `/var/www/html`. So you might copy the
-compiled help system to this folder:
+# Why Register?
 
-```
-/var/www/html/bob/help
-```
+The ray tracer and all tools will work fine without registering any repos. The
+registration process is to assist in some of the build scripts, in locating
+stuff that might not be in an easy to find location. Or where you've forgotten
+the location.
 
-The would expose the help system via localhost as follows:
+If you know the location of any of the repositories, you can open a terminal
+for that folder and invoke the `register` script to check out the registry.
 
-```
-http://localhost/bob/help
-```
+# Script Differences
 
-# Tools
+Although each of the four repositories has a copy of `register`, they are
+not identical.
 
-See the README.md file in the `tools` folder.
+Specifically, the `PROJECT` variable near the top is modified in each to
+contain the simplified name of the repository, according to this table:
 
-I've also written a collection of graphics tools as a companion
-to Bob. These tools have their own repository:
-
-```
-git clone https://github.com/NyteOwlDave/BOB-Tools.git
-```
-
-This is a collection of scripts and binary executables written
-in a variety of languages.
+| Name | GitHub Repository | Notes |
+|-|-|-|
+| original | BOB-Original |
+| runtime | BOB-Runtime |
+| tools | BOB-Tools |
+| help | BOB-Help |
 
 ---
-
