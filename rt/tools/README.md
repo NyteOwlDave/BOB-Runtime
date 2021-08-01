@@ -1,8 +1,10 @@
 
 # Tools
 
-I've also written a collection of graphics tools as a companion
-to Bob. These tools have their own repository:
+Bob itself is just the ray tracer. Yet it comes with a variety
+of tools intended to simplify various tasks.
+
+The tools have their own repository:
 
 ```
 git clone https://github.com/NyteOwlDave/BOB-Tools.git
