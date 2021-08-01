@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Set this to the name of the executable
+# on your system that can preview BMP files
+PREVIEW=eog
+
+# File to be created
+TARGET=_.bmp
+
+tools/chum $1.img $TARGET
+($PREVIEW $TARGET)&
+
+

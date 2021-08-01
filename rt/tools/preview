@@ -1,0 +1,28 @@
+#!/bin/bash
+
+TARGET=_.ppm
+VIEWER=eog
+
+# Viewer may be different on other systems.
+# This is for Ubuntu 18.04 LTS version.
+
+function Remove()
+{
+	rm $TARGET 2> /dev/null
+}
+
+function ShowImage()
+{
+	($VIEWER $TARGET)&
+}
+
+function Main()
+{
+	Remove
+	./chum "$@" $TARGET
+	ShowImage
+}
+
+Main "$@"
+
+
