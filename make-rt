@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# This is a project level script. It exists solely for use
+# within the repo to quickly layout the folder hierarchy.
+# There is no need to run it within a cloned repo, unless
+# the hierarchy had been damaged and needs a quick fix.
+# Still, this will not rebuild any missing files.
+
+# List of folder names (for BOB)
+LIST=bobpath
+
+# Create and enter the rt folder
+mkdir rt
+cd rt
+
+# Create the file to receive list of subfolder names
+>$LIST
+
+# Create subfolders
+while read a
+do
+    mkdir $a
+    echo $a >> $LIST
+done << ___
+img
+map
+obj
+plate
+prj
+scene
+studio
+surf
+tools
+___
+
