@@ -12,12 +12,28 @@ function GetRuntimePath()
 
 function GetMainGlob($ext)
 {
-    return GetRuntimePath() . "/*." . $ext;
+    $s = GetRuntimePath() . "/"; 
+    if ($ext == "*")
+    {
+        return $s . $ext;
+    }
+    else
+    {
+        return $s . "*." . $ext;
+    }
 }
 
 function GetSubGlob($subfolder, $ext)
 {
-    return GetRuntimePath() . "/" . $subfolder . "/*." . $ext;
+    $s = GetRuntimePath() . "/" . $subfolder . "/"; 
+    if ($ext == "*")
+    {
+        return $s . $ext;
+    }
+    else
+    {
+        return $s . "*." . $ext;
+    }
 }
 
 function GetSubFolders()
@@ -41,12 +57,14 @@ function GetOwnerFromGlob($glob)
 
 function ListFiles($glob)
 {
-    #print ("[" . $glob . "]\n");
     print ("[" . GetOwnerFromGlob($glob) . "]\n");
     $files = glob($glob);
     foreach ($files as $file) {
-        $file = basename($file);
-        print ($file) . "\n";
+        if (is_file($file) || 1)
+        {
+            $file = basename($file);
+            print ($file) . "\n";
+        }
     }
 }
 
@@ -58,10 +76,11 @@ function GetExtension()
     }
     if (isset($_SERVER['argv']))
     {
-        $a = $_SERVER['argv'];
-        if (sizeof($a) > 1)
+        $_SERVER['argv'];
+        if ($_SERVER['argc'] > 1)
         {
-            return $a[1];
+            $a = $_SERVER['argv'][1];
+            if ($a != "--all") return $a;
         }    
     }
     return "*";
